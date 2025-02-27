@@ -35,6 +35,10 @@
           <input type="text" name="cedula">
           <br><br>
 
+          <b>Numero de personas:</b>
+          <input type="number" name="personas" min="1" max="100">
+          <br><br>
+
           <b>Sucursales:</b><br><br>
           <input type="radio" name="Sucursales" value="Cartagena">Cartagena
           <input type="radio" name="Sucursales" value="Barranquilla">Barranquilla
@@ -84,6 +88,7 @@
         $nombres = $_POST['Nombres'];
         $apellidos = $_POST['Apellidos'];
         $cedula = $_POST['cedula'];
+        $personas = $_POST['personas'];
         $sucursales = $_POST['Sucursales'];
         $edad = $_POST['edad'];
         $Tipo_habitación = $_POST['Tipo_habitación'];
@@ -134,6 +139,7 @@
         <p><strong>Nombres:</strong> $nombres</p>
         <p><strong>Apellidos:</strong> $apellidos</p>
         <p><strong>Cédula:</strong> $cedula</p>
+        <p><strong>Numero de personas:</strong> $personas</p>
         <p><strong>Sucursal:</strong> $zona</p>
         <p><strong>Edad:</strong> $edad años</p>
         <p><strong>Tipo de habitación:</strong> $Tipo_habitación</p>
