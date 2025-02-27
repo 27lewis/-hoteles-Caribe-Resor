@@ -60,12 +60,12 @@
           <br><br>
 
           <b>Cantidad de días:</b>
-          <input type="number" name="dias" min="1" max="30">
+          <input type="number" name="dias" min="1" max="30" required>
           <br><br>
 
           <b>Adicional:</b><br>
-          <p>Manera adicional la cadena de hoteles ofrece el servicio de desayuno.</p>
-          <select name="Adicional" id="select">
+          <p>La cadena de hoteles ofrece el servicio de desayuno.</p>
+          <select name="Adicional" id="select" >
             <option value=""></option>
             <option value="incluye">Incluye un costo de 8.000 pesos por día y por persona</option>
             <option value="noincluye">No incluir</option>
@@ -81,8 +81,27 @@
       <?php
 
       if($_SERVER["REQUEST_METHOD"] == "POST" ){
+        $nombres = $_POST['Nombres'];
+        $apellidos = $_POST['Apellidos'];
+        $cedula = $_POST['cedula'];
+        $sucursales = $_POST['Sucursales'];
+        $edad = $_POST['edad'];
         $Tipo_habitación = $_POST['Tipo_habitación'];
-        $dias =$_POST['dias'];
+        $fecha = $_POST['Fecha'];
+        $dias = $_POST['dias'];
+        $adicional = $_POST['Adicional'];
+        
+        if($sucursales == "Cartagena"){
+          $zona = "Cartagena";
+        }
+        if($sucursales == "Barranquilla"){
+          $zona = "Barranquilla";
+        }
+        if($sucursales == "Santa Marta"){
+          $zona = "Santa Marta";
+        }
+        
+
 
         
         if($Tipo_habitación == "Sencilla"){
@@ -102,12 +121,30 @@
             
         }
 
-        if(isset($_POST['Adicional'])){
-            $total+= 8000 * $dias;
+        if($adicional == "incluye" ){
+          $total+= 8000 * $dias;
         }
-        echo "El costo de su estadia es de :$ ".$total;
-      }
-      ?>
+          
+
+        // if(isset($_POST['Adicional'])){
+        //     $total+= 8000 * $dias;
+        // }
+
+        echo "<div >
+        <p><strong>Nombres:</strong> $nombres</p>
+        <p><strong>Apellidos:</strong> $apellidos</p>
+        <p><strong>Cédula:</strong> $cedula</p>
+        <p><strong>Sucursal:</strong> $zona</p>
+        <p><strong>Edad:</strong> $edad años</p>
+        <p><strong>Tipo de habitación:</strong> $Tipo_habitación</p>
+        <p><strong>Fecha de llegada:</strong> $fecha</p>
+        <p><strong>Cantidad de días:</strong> $dias</p>
+        <p><strong>Adicional:</strong> $adicional</p>
+        <p><strong>Costo total:</strong> <span style='color: green;'>$ $total</span></p>
+       </div>";
+        
+       }
+     ?>
     </header>
   </div>
 </body>
